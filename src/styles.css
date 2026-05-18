@@ -225,5 +225,31 @@
     background-size: 64px 64px;
     pointer-events: none;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  .shadow-elev-1 { box-shadow: var(--shadow-elev-1); }
+  .shadow-elev-2 { box-shadow: var(--shadow-elev-2); }
+  .shadow-elev-3 { box-shadow: var(--shadow-elev-3); }
+
+  .section-soft {
+    background-image:
+      radial-gradient(ellipse at top, color-mix(in oklab, var(--color-gold) 6%, transparent) 0%, transparent 60%),
+      linear-gradient(180deg, var(--color-background) 0%, color-mix(in oklab, var(--color-secondary) 60%, var(--color-background)) 100%);
   }
+
+  .container-x { max-width: 1200px; margin-inline: auto; padding-inline: 1.5rem; }
+
+  .cta-pulse { position: relative; }
+  .cta-pulse::after {
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-gold) 60%, transparent);
+    animation: cta-pulse 2.8s ease-out infinite;
+    pointer-events: none;
+  }
+  @keyframes cta-pulse {
+    0%   { box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-gold) 55%, transparent); }
+    70%  { box-shadow: 0 0 0 14px color-mix(in oklab, var(--color-gold) 0%, transparent); }
+    100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-gold) 0%, transparent); }
+  }
+}
 }
