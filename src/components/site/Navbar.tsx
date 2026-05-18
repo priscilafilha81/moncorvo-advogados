@@ -32,18 +32,18 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-24 lg:h-28">
-        <a href="#top" className="flex items-center group" aria-label="Moncorvo Advogados Associados">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-20 lg:h-22">
+        <a href="#top" className="flex items-center group shrink-0" aria-label="Moncorvo Advogados Associados">
           <img
             src={logo}
             alt="Moncorvo Advogados Associados"
-            className="h-12 sm:h-14 lg:h-16 w-auto object-contain select-none transition-transform duration-500 group-hover:scale-[1.02]"
+            className="h-8 sm:h-9 lg:h-10 w-auto object-contain select-none transition-transform duration-500 group-hover:scale-[1.02]"
             draggable={false}
           />
           <span className="sr-only">Moncorvo Advogados Associados</span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-8" aria-label="Navegação principal">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 mx-auto" aria-label="Navegação principal">
           {links.map((l) => (
             <a
               key={l.href}
