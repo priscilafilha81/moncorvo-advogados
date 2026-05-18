@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/contact";
+import logo from "@/assets/moncorvo-logo.png";
 
 const links = [
   { href: "#sobre", label: "Sobre" },
