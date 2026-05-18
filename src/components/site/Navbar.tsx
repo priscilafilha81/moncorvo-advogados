@@ -5,7 +5,7 @@ import logo from "@/assets/moncorvo-logo.png";
 
 const links = [
   { href: "#sobre", label: "Sobre" },
-  { href: "#areas", label: "Áreas de Atuação" },
+  { href: "#areas", label: "Áreas" },
   { href: "#processo", label: "Processo" },
   { href: "#diferenciais", label: "Diferenciais" },
   { href: "#depoimentos", label: "Depoimentos" },
@@ -20,94 +20,160 @@ export function Navbar() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-40 transition-all duration-500 ${
+      className={`fixed top-0 inset-x-0 z-40 transition-[background-color,box-shadow,backdrop-filter,border-color] duration-500 ease-out ${
         scrolled
-          ? "bg-background/95 backdrop-blur-xl shadow-soft border-b border-border"
-          : "bg-transparent"
+          ? "bg-background/80 backdrop-blur-md shadow-[0_8px_30px_-12px_rgba(91,0,8,0.12)] border-b border-border/60"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-20 lg:h-22">
-        <a href="#top" className="flex items-center group shrink-0" aria-label="Moncorvo Advogados Associados">
+      <div
+        className={`mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 flex items-center justify-between transition-[height] duration-500 ${
+          scrolled ? "h-16 lg:h-[68px]" : "h-20 lg:h-24"
+        }`}
+      >
+        {/* Logo */}
+        <a
+          href="#top"
+          className="flex items-center group shrink-0 focus-visible:outline-none"
+          aria-label="Moncorvo Advogados Associados"
+        >
           <img
             src={logo}
+            srcSet={`${logo} 1x, ${logo} 2x`}
             alt="Moncorvo Advogados Associados"
-            className="h-8 sm:h-9 lg:h-10 w-auto object-contain select-none transition-transform duration-500 group-hover:scale-[1.02]"
+            width={1364}
+            height={236}
+            decoding="async"
+            fetchPriority="high"
+            className={`w-auto object-contain select-none transition-all duration-500 group-hover:scale-[1.015] ${
+              scrolled
+                ? "h-7 sm:h-8 lg:h-9"
+                : "h-8 sm:h-9 lg:h-10"
+            }`}
+            style={{ imageRendering: "auto" }}
             draggable={false}
           />
           <span className="sr-only">Moncorvo Advogados Associados</span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 mx-auto" aria-label="Navegação principal">
+        {/* Desktop Nav */}
+        <nav
+          className="hidden lg:flex items-center gap-5 xl:gap-8 mx-auto"
+          aria-label="Navegação principal"
+        >
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className={`text-[13px] tracking-wide transition-colors duration-300 relative group ${
-                scrolled ? "text-ink/70 hover:text-primary" : "text-primary-foreground/80 hover:text-gold"
+              className={`text-[13px] font-medium tracking-wide transition-colors duration-300 relative group ${
+                scrolled
+                  ? "text-ink/75 hover:text-primary"
+                  : "text-primary-foreground/85 hover:text-gold"
               }`}
             >
               {l.label}
-              <span className="absolute -bottom-1.5 left-0 w-0 group-hover:w-full h-px bg-gold transition-all duration-500 ease-out" />
+              <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 group-hover:w-full h-px bg-gold transition-all duration-500 ease-out" />
             </a>
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
+        {/* Desktop CTA */}
+        <div className="hidden lg:flex items-center shrink-0">
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 shadow-soft hover:-translate-y-0.5 ${
+            className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-semibold tracking-wide transition-all duration-300 hover:-translate-y-0.5 hover:shadow-elev-2 ${
               scrolled
-                ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                : "bg-gold text-gold-foreground hover:bg-gold/90"
+                ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft"
+                : "bg-gold text-gold-foreground hover:bg-gold/90 shadow-soft"
             }`}
           >
-            <MessageCircle className="w-4 h-4" />
+            <MessageCircle className="w-4 h-4" strokeWidth={2} />
             Falar com Especialista
           </a>
         </div>
 
+        {/* Mobile toggle */}
         <button
-          className={`lg:hidden p-2 transition-colors ${scrolled ? "text-primary" : "text-primary-foreground"}`}
+          className={`lg:hidden relative w-10 h-10 inline-flex items-center justify-center rounded-full transition-colors duration-300 ${
+            scrolled
+              ? "text-primary hover:bg-primary/5"
+              : "text-primary-foreground hover:bg-primary-foreground/10"
+          }`}
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={open}
         >
-          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <Menu
+            className={`w-5 h-5 absolute transition-all duration-300 ${
+              open ? "opacity-0 rotate-90 scale-75" : "opacity-100 rotate-0 scale-100"
+            }`}
+          />
+          <X
+            className={`w-5 h-5 absolute transition-all duration-300 ${
+              open ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-75"
+            }`}
+          />
         </button>
       </div>
 
-      {open && (
-        <div className="lg:hidden bg-background border-t border-border">
-          <nav className="px-6 py-6 flex flex-col gap-4" aria-label="Navegação móvel">
-            {links.map((l) => (
+      {/* Mobile menu — premium slide-down */}
+      <div
+        className={`lg:hidden overflow-hidden transition-[max-height,opacity] duration-500 ease-out ${
+          open ? "max-h-[90vh] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="bg-background/98 backdrop-blur-xl border-t border-border/60">
+          <nav
+            className="px-6 py-8 flex flex-col gap-1"
+            aria-label="Navegação móvel"
+          >
+            {links.map((l, i) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-base text-ink hover:text-primary py-2 border-b border-border/50"
+                style={{ transitionDelay: open ? `${80 + i * 40}ms` : "0ms" }}
+                className={`group flex items-center justify-between text-[15px] font-medium text-ink/85 hover:text-primary py-3.5 border-b border-border/40 transition-all duration-500 ${
+                  open ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-3"
+                }`}
               >
-                {l.label}
+                <span>{l.label}</span>
+                <span className="text-gold opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  →
+                </span>
               </a>
             ))}
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-full text-sm font-medium"
+              onClick={() => setOpen(false)}
+              style={{ transitionDelay: open ? `${80 + links.length * 40}ms` : "0ms" }}
+              className={`mt-6 inline-flex items-center justify-center gap-2 bg-gold text-gold-foreground px-5 py-3.5 rounded-full text-sm font-semibold shadow-premium transition-all duration-500 ${
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+              }`}
             >
               <MessageCircle className="w-4 h-4" />
               Falar com Especialista
             </a>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 }
