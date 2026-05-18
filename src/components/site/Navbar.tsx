@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/contact";
+import logo from "@/assets/moncorvo-logo.png";
 
 const links = [
   { href: "#sobre", label: "Sobre" },
@@ -33,15 +34,14 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-20">
         <a href="#top" className="flex items-center gap-3 group" aria-label="Moncorvo Advogados Associados">
-          <span className={`inline-flex items-center justify-center h-10 w-10 rounded-full border font-display text-lg transition-colors duration-300 ${scrolled ? "border-gold text-gold" : "border-gold/70 text-gold"}`}>
-            M
-          </span>
-          <span className={`font-display text-base sm:text-lg leading-tight transition-colors duration-300 ${scrolled ? "text-primary" : "text-primary-foreground"}`}>
-            Moncorvo
-            <span className="block text-[10px] tracking-[0.3em] uppercase text-gold font-sans">
-              Advogados Associados
-            </span>
-          </span>
+          <img
+            src={logo}
+            alt="Moncorvo Advogados Associados"
+            className="h-10 sm:h-12 w-auto object-contain select-none"
+            style={{ imageRendering: "auto" }}
+            draggable={false}
+          />
+          <span className="sr-only">Moncorvo Advogados Associados</span>
         </a>
 
         <nav className="hidden lg:flex items-center gap-8" aria-label="Navegação principal">

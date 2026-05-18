@@ -1,5 +1,6 @@
 import { MapPin, Phone, Mail, Instagram, Clock, MessageCircle } from "lucide-react";
 import { CONTACT, WHATSAPP_URL } from "@/lib/contact";
+import logo from "@/assets/moncorvo-logo.png";
 
 const quickLinks = [
   { href: "#sobre", label: "Sobre" },
@@ -29,16 +30,13 @@ export function Footer() {
         <div className="grid lg:grid-cols-12 gap-12">
           {/* Brand */}
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex items-center justify-center h-12 w-12 rounded-full border border-gold text-gold font-display text-xl">
-                M
-              </span>
-              <div>
-                <p className="font-display text-xl text-primary-foreground">Moncorvo</p>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-gold">
-                  Advogados Associados
-                </p>
-              </div>
+            <div className="inline-flex items-center">
+              <img
+                src={logo}
+                alt="Moncorvo Advogados Associados"
+                className="h-14 sm:h-16 w-auto object-contain select-none drop-shadow-[0_2px_12px_rgba(200,162,93,0.15)]"
+                draggable={false}
+              />
             </div>
             <p className="mt-6 text-sm text-primary-foreground/70 leading-relaxed max-w-sm">
               Advocacia estratégica, humanizada e especializada em Salvador / BA. Atuação ética e
