@@ -134,12 +134,12 @@ export function Navbar() {
       {/* Mobile menu — premium slide-down */}
       <div
         className={`lg:hidden overflow-hidden transition-[max-height,opacity] duration-500 ease-out ${
-          open ? "max-h-[90vh] opacity-100" : "max-h-0 opacity-0"
+          open ? "max-h-[calc(100dvh-4rem)] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-background/98 backdrop-blur-xl border-t border-border/60">
+        <div className="bg-background/98 backdrop-blur-xl border-t border-border/60 overflow-y-auto overscroll-contain nav-mobile-scroll max-h-[calc(100dvh-4rem)] [-webkit-overflow-scrolling:touch]">
           <nav
-            className="px-6 py-8 flex flex-col gap-1"
+            className="px-6 py-6 sm:py-8 flex flex-col gap-1 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
             aria-label="Navegação móvel"
           >
             {links.map((l, i) => (
