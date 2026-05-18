@@ -32,13 +32,12 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-20">
-        <a href="#top" className="flex items-center gap-3 group" aria-label="Moncorvo Advogados Associados">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-24 lg:h-28">
+        <a href="#top" className="flex items-center group" aria-label="Moncorvo Advogados Associados">
           <img
             src={logo}
             alt="Moncorvo Advogados Associados"
-            className="h-10 sm:h-12 w-auto object-contain select-none"
-            style={{ imageRendering: "auto" }}
+            className="h-12 sm:h-14 lg:h-16 w-auto object-contain select-none transition-transform duration-500 group-hover:scale-[1.02]"
             draggable={false}
           />
           <span className="sr-only">Moncorvo Advogados Associados</span>

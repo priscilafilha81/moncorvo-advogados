@@ -34,7 +34,7 @@ export function Footer() {
               <img
                 src={logo}
                 alt="Moncorvo Advogados Associados"
-                className="h-14 sm:h-16 w-auto object-contain select-none drop-shadow-[0_2px_12px_rgba(200,162,93,0.15)]"
+                className="h-16 sm:h-20 w-auto object-contain select-none drop-shadow-[0_4px_18px_rgba(200,162,93,0.25)]"
                 draggable={false}
               />
             </div>
