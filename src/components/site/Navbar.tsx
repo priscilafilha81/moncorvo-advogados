@@ -25,18 +25,18 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 inset-x-0 z-40 transition-all duration-500 ${
         scrolled
-          ? "bg-background/90 backdrop-blur-md shadow-soft border-b border-border"
+          ? "bg-background/95 backdrop-blur-xl shadow-soft border-b border-border"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-20">
-        <a href="#top" className="flex items-center gap-3" aria-label="Moncorvo Advogados Associados">
-          <span className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-gold text-gold font-display text-lg">
+        <a href="#top" className="flex items-center gap-3 group" aria-label="Moncorvo Advogados Associados">
+          <span className={`inline-flex items-center justify-center h-10 w-10 rounded-full border font-display text-lg transition-colors duration-300 ${scrolled ? "border-gold text-gold" : "border-gold/70 text-gold"}`}>
             M
           </span>
-          <span className={`font-display text-base sm:text-lg leading-tight ${scrolled ? "text-primary" : "text-primary"}`}>
+          <span className={`font-display text-base sm:text-lg leading-tight transition-colors duration-300 ${scrolled ? "text-primary" : "text-primary-foreground"}`}>
             Moncorvo
             <span className="block text-[10px] tracking-[0.3em] uppercase text-gold font-sans">
               Advogados Associados
@@ -49,10 +49,12 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-ink/80 hover:text-primary transition-colors relative group"
+              className={`text-[13px] tracking-wide transition-colors duration-300 relative group ${
+                scrolled ? "text-ink/70 hover:text-primary" : "text-primary-foreground/80 hover:text-gold"
+              }`}
             >
               {l.label}
-              <span className="absolute -bottom-1 left-0 w-0 group-hover:w-full h-px bg-gold transition-all duration-300" />
+              <span className="absolute -bottom-1.5 left-0 w-0 group-hover:w-full h-px bg-gold transition-all duration-500 ease-out" />
             </a>
           ))}
         </nav>
@@ -62,7 +64,11 @@ export function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-medium hover:bg-primary/90 transition-all shadow-soft"
+            className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 shadow-soft hover:-translate-y-0.5 ${
+              scrolled
+                ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                : "bg-gold text-gold-foreground hover:bg-gold/90"
+            }`}
           >
             <MessageCircle className="w-4 h-4" />
             Falar com Especialista
@@ -70,7 +76,7 @@ export function Navbar() {
         </div>
 
         <button
-          className="lg:hidden p-2 text-primary"
+          className={`lg:hidden p-2 transition-colors ${scrolled ? "text-primary" : "text-primary-foreground"}`}
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
         >
