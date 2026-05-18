@@ -43,7 +43,7 @@ export function Navbar() {
           <span className="sr-only">Moncorvo Advogados Associados</span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-8" aria-label="Navegação principal">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 mx-auto" aria-label="Navegação principal">
           {links.map((l) => (
             <a
               key={l.href}
