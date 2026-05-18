@@ -45,7 +45,7 @@ export function Hero() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-2 bg-gold text-gold-foreground px-7 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gold/90 hover:-translate-y-0.5 transition-all duration-300 shadow-premium w-full sm:w-auto"
+              className="cta-pulse group inline-flex items-center justify-center gap-2 bg-gold text-gold-foreground px-7 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gold/90 hover:-translate-y-0.5 transition-all duration-300 shadow-premium w-full sm:w-auto"
             >
               Falar com um Especialista
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
