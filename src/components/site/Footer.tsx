@@ -1,5 +1,6 @@
 import { MapPin, Phone, Mail, Instagram, Clock, MessageCircle } from "lucide-react";
 import { CONTACT, WHATSAPP_URL } from "@/lib/contact";
+import logo from "@/assets/moncorvo-logo.png";
 
 const quickLinks = [
   { href: "#sobre", label: "Sobre" },
