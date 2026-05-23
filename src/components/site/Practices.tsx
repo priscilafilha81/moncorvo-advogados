@@ -86,7 +86,7 @@ export function Practices() {
           subtitle="Atuação consultiva e contenciosa em áreas estratégicas, com mais de 15 anos de experiência defendendo direitos com profundidade técnica."
           align="center"
         />
-        <div className="mt-16 grid md:grid-cols-2 gap-6">
+        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {areas.map((a, i) => (
             <AreaCard key={a.title} a={a} i={i} />
           ))}
