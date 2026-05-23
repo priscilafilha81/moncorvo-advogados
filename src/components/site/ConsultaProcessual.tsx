@@ -286,10 +286,8 @@ export function ConsultaProcessual() {
                     <circle cx="400" cy="40" r="7" fill="var(--color-gold)" />
                     <circle cx="400" cy="40" r="14" fill="var(--color-gold)" fillOpacity="0.25" />
                   </svg>
-
-                    />
-                  </svg>
                 </div>
+
 
                 <p className="mt-4 text-xs text-muted-foreground text-center italic">
                   Imagem ilustrativa do portal oficial do TJBA.
