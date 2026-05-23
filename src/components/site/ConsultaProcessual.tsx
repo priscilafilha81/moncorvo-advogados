@@ -211,41 +211,83 @@ export function ConsultaProcessual() {
                     loading="lazy"
                   />
 
-                  {/* Highlight overlay around Consulta Processual area (approx left 8%-50%, top 55%-95%) */}
+                  {/* Dim everything outside the highlight area */}
+                  <div className="absolute inset-0 bg-primary/15 pointer-events-none mix-blend-multiply" />
+
+                  {/* Premium highlight around CONSULTA PROCESSUAL box */}
                   <div
                     className="absolute pointer-events-none"
-                    style={{ left: "7.5%", top: "54%", width: "44%", height: "33%" }}
+                    style={{ left: "6%", top: "52%", width: "46%", height: "25%" }}
                   >
-                    <div className="absolute inset-0 rounded-xl ring-[3px] ring-gold shadow-[0_0_0_6px_rgba(200,162,93,0.18)] animate-[pulse_2.6s_ease-in-out_infinite]" />
-                    <span className="absolute -top-3 left-3 bg-gold text-gold-foreground text-[10px] font-bold tracking-[0.2em] uppercase px-2.5 py-1 rounded-full shadow-premium">
-                      Aqui
+                    {/* Outer glow */}
+                    <div className="absolute -inset-2 rounded-2xl bg-gold/25 blur-xl animate-[pulse_2.4s_ease-in-out_infinite]" />
+                    {/* Solid bright frame to "cut" through the dim layer */}
+                    <div className="absolute inset-0 rounded-xl bg-transparent ring-[3px] ring-gold shadow-[0_0_0_8px_rgba(200,162,93,0.22),0_20px_60px_-10px_rgba(200,162,93,0.5)]" />
+                    {/* Inner bright frame */}
+                    <div className="absolute inset-1 rounded-lg ring-1 ring-gold/40" />
+
+                    {/* "AQUI" badge */}
+                    <span className="absolute -top-4 -right-3 sm:-right-4 inline-flex items-center gap-1.5 bg-gradient-gold text-gold-foreground text-[10px] sm:text-[11px] font-bold tracking-[0.22em] uppercase px-3 py-1.5 rounded-full shadow-premium border border-gold-foreground/10">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold-foreground animate-pulse" />
+                      Consulte aqui
                     </span>
                   </div>
 
-                  {/* Arrow pointing to Consulta Processual */}
+                  {/* Premium curved arrow pointing to the search dropdown */}
                   <svg
-                    className="absolute pointer-events-none drop-shadow-[0_4px_8px_rgba(91,0,8,0.35)]"
-                    style={{ left: "52%", top: "30%", width: "22%", height: "30%" }}
-                    viewBox="0 0 200 180"
+                    className="absolute pointer-events-none"
+                    style={{ left: "30%", top: "12%", width: "42%", height: "55%" }}
+                    viewBox="0 0 420 500"
                     fill="none"
+                    preserveAspectRatio="none"
                     aria-hidden
                   >
                     <defs>
-                      <marker id="arrowHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                        <path d="M0,0 L10,5 L0,10 z" fill="var(--color-primary)" />
+                      <marker
+                        id="arrowHeadGold"
+                        viewBox="0 0 12 12"
+                        refX="9"
+                        refY="6"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse"
+                      >
+                        <path d="M0,0 L12,6 L0,12 L3,6 z" fill="var(--color-gold)" />
                       </marker>
+                      <filter id="arrowGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="6" result="blur" />
+                        <feMerge>
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
                     </defs>
+                    {/* Soft halo stroke */}
                     <path
-                      d="M180,20 Q120,40 60,140"
-                      stroke="var(--color-primary)"
-                      strokeWidth="3"
+                      d="M400,40 C300,80 220,180 160,300 C130,360 110,410 80,460"
+                      stroke="var(--color-gold)"
+                      strokeOpacity="0.25"
+                      strokeWidth="14"
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                    {/* Main arrow */}
+                    <path
+                      d="M400,40 C300,80 220,180 160,300 C130,360 110,410 80,460"
+                      stroke="var(--color-gold)"
+                      strokeWidth="5"
                       strokeLinecap="round"
                       strokeDasharray="0"
                       fill="none"
-                      markerEnd="url(#arrowHead)"
+                      filter="url(#arrowGlow)"
+                      markerEnd="url(#arrowHeadGold)"
                     />
+                    {/* Origin dot */}
+                    <circle cx="400" cy="40" r="7" fill="var(--color-gold)" />
+                    <circle cx="400" cy="40" r="14" fill="var(--color-gold)" fillOpacity="0.25" />
                   </svg>
                 </div>
+
 
                 <p className="mt-4 text-xs text-muted-foreground text-center italic">
                   Imagem ilustrativa do portal oficial do TJBA.
