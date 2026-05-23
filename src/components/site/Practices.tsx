@@ -82,8 +82,8 @@ export function Practices() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeader
           eyebrow="Áreas de Atuação"
-          title="Especialização técnica em quatro frentes essenciais."
-          subtitle="Atuação consultiva e contenciosa em áreas estratégicas para defender seus direitos com profundidade técnica."
+          title="Especialização técnica em cinco frentes essenciais."
+          subtitle="Atuação consultiva e contenciosa em áreas estratégicas, com mais de 15 anos de experiência defendendo direitos com profundidade técnica."
           align="center"
         />
         <div className="mt-16 grid md:grid-cols-2 gap-6">
