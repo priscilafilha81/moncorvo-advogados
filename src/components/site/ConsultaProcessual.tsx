@@ -2,6 +2,7 @@ import { ArrowRight, ExternalLink, ShieldCheck, Zap, RefreshCw, Search, FileText
 import { useReveal } from "@/hooks/use-reveal";
 import { WHATSAPP_URL } from "@/lib/contact";
 import portalImg from "@/assets/tjba-portal.png";
+import tjbaLogo from "@/assets/tjba-logo.png";
 
 const TJBA_URL = "https://www.tjba.jus.br/portal/";
 
@@ -173,13 +174,24 @@ export function ConsultaProcessual() {
                 </a>
               </div>
               <div className="lg:col-span-5 hidden lg:flex justify-center">
-                <div className="w-full max-w-sm aspect-[4/3] rounded-2xl bg-gradient-primary p-1 shadow-premium">
-                  <div className="w-full h-full rounded-[14px] bg-card flex items-center justify-center">
-                    <div className="text-center px-6">
-                      <ExternalLink className="w-10 h-10 text-gold mx-auto mb-3" strokeWidth={1.5} />
-                      <p className="text-sm text-muted-foreground">tjba.jus.br/portal</p>
-                      <p className="font-display text-xl text-primary mt-1">Portal Oficial</p>
-                    </div>
+                <div className="w-full max-w-sm aspect-[4/3] rounded-2xl bg-gradient-primary p-1 shadow-premium group">
+                  <div className="w-full h-full rounded-[14px] bg-white flex flex-col items-center justify-center px-6 py-8 relative overflow-hidden transition-transform duration-500 group-hover:scale-[0.99]">
+                    <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gold/10 border border-gold/30 text-[10px] tracking-[0.2em] uppercase text-gold font-semibold">
+                      <ShieldCheck className="w-3 h-3" strokeWidth={2} />
+                      Site Oficial
+                    </span>
+                    <img
+                      src={tjbaLogo}
+                      alt="Logomarca oficial do Tribunal de Justiça do Estado da Bahia"
+                      className="max-h-24 w-auto object-contain"
+                      draggable={false}
+                    />
+                    <p className="font-display text-base text-primary mt-6 tracking-wide text-center">
+                      Portal Oficial do TJBA
+                    </p>
+                    <span className="mt-1 text-[11px] tracking-[0.18em] uppercase text-muted-foreground">
+                      tjba.jus.br/portal
+                    </span>
                   </div>
                 </div>
               </div>
