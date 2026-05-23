@@ -4,12 +4,10 @@ import { WHATSAPP_URL } from "@/lib/contact";
 import logo from "@/assets/moncorvo-logo.png";
 
 const links = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#areas", label: "Áreas" },
+  { href: "#sobre", label: "O Escritório" },
+  { href: "#areas", label: "Especialidades" },
   { href: "#equipe", label: "Equipe" },
-  { href: "#processo", label: "Processo" },
   { href: "#consulte-processo", label: "Consulte seu Processo" },
-  { href: "#diferenciais", label: "Diferenciais" },
   { href: "#faq", label: "FAQ" },
   { href: "#contato", label: "Contato" },
 ];
