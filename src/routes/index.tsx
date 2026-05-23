@@ -92,6 +92,7 @@ function Index() {
         <About />
         <WhyChoose />
         <Practices />
+        <Team />
         <Process />
         <ConsultaProcessual />
         <Differentials />
