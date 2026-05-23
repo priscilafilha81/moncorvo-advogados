@@ -71,23 +71,74 @@ export function Hero() {
 
         {/* Premium photo */}
         <div className="lg:col-span-6 xl:col-span-5 reveal order-1 lg:order-2">
-          <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none">
+          <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none group/hero">
             {/* gold frame accent */}
-            <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-16 h-16 sm:w-24 sm:h-24 border-t border-l border-gold/50 rounded-tl-2xl pointer-events-none" />
-            <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 border-b border-r border-gold/50 rounded-br-2xl pointer-events-none" />
+            <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-16 h-16 sm:w-24 sm:h-24 border-t border-l border-gold/50 rounded-tl-2xl pointer-events-none z-20" />
+            <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-24 sm:h-24 border-b border-r border-gold/50 rounded-br-2xl pointer-events-none z-20" />
 
             <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-br from-gold/15 via-transparent to-primary/30 blur-2xl rounded-[2rem]" />
 
             <div className="relative overflow-hidden rounded-2xl shadow-premium ring-1 ring-gold/20">
               <img
                 src={heroImage}
-                alt="Advogado da Moncorvo Advogados Associados em escritório corporativo"
-                className="w-full h-[340px] sm:h-[480px] lg:h-[600px] object-cover object-center"
+                alt="Dr. Ângelo Moncorvo, advogado fundador da Moncorvo Advogados Associados"
+                className="w-full h-[340px] sm:h-[480px] lg:h-[600px] object-cover object-center animate-[heroZoom_18s_ease-in-out_infinite_alternate] transition-transform duration-700 ease-out group-hover/hero:scale-[1.015]"
                 loading="eager"
                 decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-primary/10 to-transparent mix-blend-multiply" />
+              {/* warm side lighting */}
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left_center,rgba(200,162,93,0.18),transparent_55%)] mix-blend-screen pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/15 to-transparent mix-blend-multiply" />
               <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-gold/10" />
+
+              {/* Founder card — desktop overlay */}
+              <div className="hidden sm:block absolute bottom-5 left-5 right-5 lg:right-auto lg:max-w-[80%] z-10 animate-[founderFadeUp_900ms_ease-out_400ms_both]">
+                <div className="relative rounded-xl border border-gold/25 bg-primary/55 backdrop-blur-md backdrop-saturate-150 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.55)] px-5 py-4">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/[0.06] to-transparent pointer-events-none" />
+                  <div className="relative">
+                    <h3 className="font-display font-semibold text-[1.15rem] leading-tight text-primary-foreground tracking-tight">
+                      Dr. Ângelo Moncorvo
+                    </h3>
+                    <p className="mt-0.5 text-[10px] uppercase tracking-[0.28em] text-gold/90 font-medium">
+                      Advogado Fundador
+                    </p>
+                    <div className="mt-3 pt-3 border-t border-gold/15">
+                      <p className="text-[10px] uppercase tracking-[0.22em] text-primary-foreground/55 mb-1.5 font-medium">
+                        Especialista em
+                      </p>
+                      <ul className="grid grid-cols-2 gap-x-3 gap-y-1 text-[12px] text-primary-foreground/85 font-light">
+                        <li className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-gold/80" />Trabalhista</li>
+                        <li className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-gold/80" />Previdenciário</li>
+                        <li className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-gold/80" />Bancário</li>
+                        <li className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-gold/80" />Consumidor</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Founder card — mobile (below image) */}
+            <div className="sm:hidden mt-5 animate-[founderFadeUp_900ms_ease-out_400ms_both]">
+              <div className="relative rounded-xl border border-gold/25 bg-primary/70 backdrop-blur-md shadow-premium px-5 py-4 text-center">
+                <h3 className="font-display font-semibold text-lg text-primary-foreground">
+                  Dr. Ângelo Moncorvo
+                </h3>
+                <p className="mt-0.5 text-[10px] uppercase tracking-[0.28em] text-gold/90 font-medium">
+                  Advogado Fundador
+                </p>
+                <div className="mt-3 pt-3 border-t border-gold/15">
+                  <p className="text-[10px] uppercase tracking-[0.22em] text-primary-foreground/55 mb-2 font-medium">
+                    Especialista em
+                  </p>
+                  <ul className="grid grid-cols-2 gap-x-3 gap-y-1 text-[12px] text-primary-foreground/85 font-light">
+                    <li>Trabalhista</li>
+                    <li>Previdenciário</li>
+                    <li>Bancário</li>
+                    <li>Consumidor</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
