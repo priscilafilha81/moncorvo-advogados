@@ -8,6 +8,7 @@ import { Process } from "@/components/site/Process";
 import { Differentials } from "@/components/site/Differentials";
 import { Testimonials } from "@/components/site/Testimonials";
 import { FAQ } from "@/components/site/FAQ";
+import { ConsultaProcessual } from "@/components/site/ConsultaProcessual";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
@@ -91,6 +92,7 @@ function Index() {
         <WhyChoose />
         <Practices />
         <Process />
+        <ConsultaProcessual />
         <Differentials />
         <Testimonials />
         <FAQ />

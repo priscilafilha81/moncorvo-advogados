@@ -7,8 +7,8 @@ const links = [
   { href: "#sobre", label: "Sobre" },
   { href: "#areas", label: "Áreas" },
   { href: "#processo", label: "Processo" },
+  { href: "#consulte-processo", label: "Consulte seu Processo" },
   { href: "#diferenciais", label: "Diferenciais" },
-  { href: "#depoimentos", label: "Depoimentos" },
   { href: "#faq", label: "FAQ" },
   { href: "#contato", label: "Contato" },
 ];
