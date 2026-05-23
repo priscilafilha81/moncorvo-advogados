@@ -1,4 +1,4 @@
-import { Briefcase, ShieldAlert, ShoppingBag, Landmark, ArrowRight } from "lucide-react";
+import { Briefcase, ShieldAlert, ShoppingBag, Landmark, HeartHandshake, ArrowRight } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { useReveal } from "@/hooks/use-reveal";
 import { WHATSAPP_URL } from "@/lib/contact";
