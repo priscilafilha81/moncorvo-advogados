@@ -61,7 +61,7 @@ export const Route = createFileRoute("/")({
           "@type": "LegalService",
           name: "Moncorvo Advogados Associados",
           description:
-            "Escritório de advocacia em Salvador / BA especializado em Direito Trabalhista, Previdenciário, do Consumidor e Bancário.",
+            "Escritório de advocacia em Salvador / BA com mais de 15 anos de experiência e 3.000 casos atendidos. Especializado em Direito Trabalhista, Previdenciário, do Consumidor, Bancário e assessoria ao Terceiro Setor.",
           image: "/og-image.jpg",
           telephone: "+55-71-98863-4838",
           email: "moncorvoadvogados@gmail.com",
