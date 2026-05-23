@@ -28,6 +28,12 @@ const areas = [
     desc: "Atuação em juros abusivos, renegociação de dívidas, golpes financeiros e revisão contratual.",
     bullets: ["Juros abusivos", "Renegociação", "Golpes financeiros", "Revisão contratual"],
   },
+  {
+    icon: HeartHandshake,
+    title: "Assessoria ao Terceiro Setor",
+    desc: "Atuação estratégica e consultiva para associações, fundações, institutos e organizações do terceiro setor, com foco em regularização, governança, compliance e segurança institucional.",
+    bullets: ["Regularização", "Governança", "Compliance", "Segurança institucional"],
+  },
 ];
 
 function AreaCard({ a, i }: { a: (typeof areas)[number]; i: number }) {
