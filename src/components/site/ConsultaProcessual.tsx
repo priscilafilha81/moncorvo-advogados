@@ -233,59 +233,6 @@ export function ConsultaProcessual() {
                     </span>
                   </div>
 
-                  {/* Premium curved arrow pointing to the search dropdown */}
-                  <svg
-                    className="absolute pointer-events-none"
-                    style={{ left: "30%", top: "12%", width: "42%", height: "55%" }}
-                    viewBox="0 0 420 500"
-                    fill="none"
-                    preserveAspectRatio="none"
-                    aria-hidden
-                  >
-                    <defs>
-                      <marker
-                        id="arrowHeadGold"
-                        viewBox="0 0 12 12"
-                        refX="9"
-                        refY="6"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse"
-                      >
-                        <path d="M0,0 L12,6 L0,12 L3,6 z" fill="var(--color-gold)" />
-                      </marker>
-                      <filter id="arrowGlow" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur stdDeviation="6" result="blur" />
-                        <feMerge>
-                          <feMergeNode in="blur" />
-                          <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                      </filter>
-                    </defs>
-                    {/* Soft halo stroke */}
-                    <path
-                      d="M400,40 C300,80 220,180 160,300 C130,360 110,410 80,460"
-                      stroke="var(--color-gold)"
-                      strokeOpacity="0.25"
-                      strokeWidth="14"
-                      strokeLinecap="round"
-                      fill="none"
-                    />
-                    {/* Main arrow */}
-                    <path
-                      d="M400,40 C300,80 220,180 160,300 C130,360 110,410 80,460"
-                      stroke="var(--color-gold)"
-                      strokeWidth="5"
-                      strokeLinecap="round"
-                      strokeDasharray="0"
-                      fill="none"
-                      filter="url(#arrowGlow)"
-                      markerEnd="url(#arrowHeadGold)"
-                    />
-                    {/* Origin dot */}
-                    <circle cx="400" cy="40" r="7" fill="var(--color-gold)" />
-                    <circle cx="400" cy="40" r="14" fill="var(--color-gold)" fillOpacity="0.25" />
-                  </svg>
                 </div>
 
 
