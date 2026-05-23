@@ -1,11 +1,12 @@
+import { Award, Users, TrendingUp, Headset } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { useReveal } from "@/hooks/use-reveal";
 
 const stats = [
-  { num: "+800", label: "Clientes atendidos" },
-  { num: "+10", label: "Anos de experiência" },
-  { num: "98%", label: "Índice de satisfação" },
-  { num: "24h", label: "Resposta média" },
+  { icon: Award, num: "+15", label: "Anos de experiência" },
+  { icon: Users, num: "+3000", label: "Casos atendidos" },
+  { icon: TrendingUp, num: "98%", label: "Índice de satisfação" },
+  { icon: Headset, num: "On/Off", label: "Atendimento presencial e online" },
 ];
 
 export function About() {
