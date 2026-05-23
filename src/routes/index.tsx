@@ -24,12 +24,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Escritório de advocacia em Salvador especializado em Direito Trabalhista, Previdenciário, do Consumidor e Bancário. Atendimento humanizado, estratégico e transparente.",
+          "Escritório de advocacia em Salvador com mais de 15 anos de experiência e 3.000 casos atendidos. Especializado em Direito Trabalhista, Previdenciário, do Consumidor, Bancário e assessoria ao Terceiro Setor.",
       },
       {
         name: "keywords",
         content:
-          "advocacia em Salvador, escritório de advocacia em Salvador, advogado trabalhista em Salvador, advogado previdenciário em Salvador, advogado bancário Salvador, advogado consumidor Salvador, assessoria jurídica em Salvador",
+          "advocacia em Salvador, escritório de advocacia em Salvador, advogado trabalhista em Salvador, advogado previdenciário em Salvador, advogado bancário Salvador, advogado consumidor Salvador, assessoria jurídica para terceiro setor, advogado terceiro setor Salvador, associações fundações institutos",
       },
       {
         property: "og:title",
