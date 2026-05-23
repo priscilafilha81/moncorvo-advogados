@@ -4,12 +4,10 @@ import { WHATSAPP_URL } from "@/lib/contact";
 import logo from "@/assets/moncorvo-logo.png";
 
 const links = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#areas", label: "Áreas" },
+  { href: "#sobre", label: "O Escritório" },
+  { href: "#areas", label: "Especialidades" },
   { href: "#equipe", label: "Equipe" },
-  { href: "#processo", label: "Processo" },
   { href: "#consulte-processo", label: "Consulte seu Processo" },
-  { href: "#diferenciais", label: "Diferenciais" },
   { href: "#faq", label: "FAQ" },
   { href: "#contato", label: "Contato" },
 ];
@@ -79,14 +77,17 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className={`text-[13px] font-medium tracking-wide transition-colors duration-300 relative group ${
+              className={`text-[13px] font-medium tracking-wide transition-colors duration-300 relative group inline-flex items-center ${
                 scrolled
                   ? "text-ink/75 hover:text-primary"
                   : "text-primary-foreground/85 hover:text-gold"
               }`}
             >
-              {l.label}
+              <span className="relative z-10 transition-transform duration-300 group-hover:-translate-y-px">
+                {l.label}
+              </span>
               <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 group-hover:w-full h-px bg-gold transition-all duration-500 ease-out" />
+              <span className="absolute inset-x-0 -inset-y-2 rounded-lg bg-current opacity-0 group-hover:opacity-[0.04] transition-opacity duration-300" />
             </a>
           ))}
         </nav>
