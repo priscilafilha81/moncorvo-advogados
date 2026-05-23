@@ -180,27 +180,21 @@ export function ConsultaProcessual() {
                 className="lg:col-span-5 hidden lg:flex justify-center group/card"
               >
                 <div className="w-full max-w-sm aspect-[4/3] rounded-2xl bg-gradient-primary p-1 shadow-premium group-hover/card:shadow-[0_20px_60px_-12px_rgba(200,162,93,1),0_0_0_1px_rgba(200,162,93,0.4)] transition-all duration-500">
-                  <div className="w-full h-full rounded-[14px] bg-white flex flex-col items-center justify-center px-6 py-8 relative overflow-hidden transition-transform duration-500 group-hover/card:scale-[0.99]">
-                    <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gold/10 border border-gold/30 text-[10px] tracking-[0.2em] uppercase text-gold font-semibold">
-                      <ShieldCheck className="w-3 h-3" strokeWidth={2} />
-                      Site Oficial
-                    </span>
+                  <div className="w-full h-full rounded-[14px] bg-white flex flex-col items-center justify-center gap-5 px-8 py-10 relative overflow-hidden transition-transform duration-500 group-hover/card:scale-[0.99]">
                     <img
                       src={tjbaLogo}
                       alt="Logomarca oficial do Tribunal de Justiça do Estado da Bahia"
-                      className="max-h-24 w-auto object-contain"
+                      className="max-h-28 w-auto object-contain"
                       draggable={false}
                     />
-                    <p className="font-display text-base text-primary mt-5 tracking-wide text-center">
-                      Portal Oficial do TJBA
-                    </p>
-                    <span className="mt-1 text-[11px] tracking-[0.18em] uppercase text-muted-foreground">
-                      tjba.jus.br/portal
-                    </span>
-                    <span className="mt-4 inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-gold font-semibold opacity-70 group-hover/card:opacity-100 transition-opacity duration-300">
-                      Acessar portal oficial de consulta processual
-                      <ExternalLink className="w-3.5 h-3.5 transition-transform duration-300 group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5" />
-                    </span>
+                    <div className="text-center">
+                      <p className="font-display text-base text-primary tracking-wide">
+                        Portal Oficial do TJBA
+                      </p>
+                      <span className="mt-1.5 inline-block text-[11px] tracking-[0.18em] uppercase text-muted-foreground">
+                        tjba.jus.br/portal
+                      </span>
+                    </div>
                   </div>
                 </div>
               </a>
