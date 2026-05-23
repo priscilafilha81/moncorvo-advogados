@@ -1,4 +1,4 @@
-import { Briefcase, ShieldAlert, ShoppingBag, Landmark, ArrowRight } from "lucide-react";
+import { Briefcase, ShieldAlert, ShoppingBag, Landmark, HeartHandshake, ArrowRight } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { useReveal } from "@/hooks/use-reveal";
 import { WHATSAPP_URL } from "@/lib/contact";
@@ -27,6 +27,12 @@ const areas = [
     title: "Direito Bancário",
     desc: "Atuação em juros abusivos, renegociação de dívidas, golpes financeiros e revisão contratual.",
     bullets: ["Juros abusivos", "Renegociação", "Golpes financeiros", "Revisão contratual"],
+  },
+  {
+    icon: HeartHandshake,
+    title: "Assessoria ao Terceiro Setor",
+    desc: "Atuação estratégica e consultiva para associações, fundações, institutos e organizações do terceiro setor, com foco em regularização, governança, compliance e segurança institucional.",
+    bullets: ["Regularização", "Governança", "Compliance", "Segurança institucional"],
   },
 ];
 
@@ -76,11 +82,11 @@ export function Practices() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeader
           eyebrow="Áreas de Atuação"
-          title="Especialização técnica em quatro frentes essenciais."
-          subtitle="Atuação consultiva e contenciosa em áreas estratégicas para defender seus direitos com profundidade técnica."
+          title="Especialização técnica em cinco frentes essenciais."
+          subtitle="Atuação consultiva e contenciosa em áreas estratégicas, com mais de 15 anos de experiência defendendo direitos com profundidade técnica."
           align="center"
         />
-        <div className="mt-16 grid md:grid-cols-2 gap-6">
+        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {areas.map((a, i) => (
             <AreaCard key={a.title} a={a} i={i} />
           ))}

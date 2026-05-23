@@ -6,6 +6,7 @@ import logo from "@/assets/moncorvo-logo.png";
 const links = [
   { href: "#sobre", label: "Sobre" },
   { href: "#areas", label: "Áreas" },
+  { href: "#equipe", label: "Equipe" },
   { href: "#processo", label: "Processo" },
   { href: "#consulte-processo", label: "Consulte seu Processo" },
   { href: "#diferenciais", label: "Diferenciais" },

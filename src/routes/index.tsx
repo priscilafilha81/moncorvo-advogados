@@ -4,6 +4,7 @@ import { Hero } from "@/components/site/Hero";
 import { About } from "@/components/site/About";
 import { WhyChoose } from "@/components/site/WhyChoose";
 import { Practices } from "@/components/site/Practices";
+import { Team } from "@/components/site/Team";
 import { Process } from "@/components/site/Process";
 import { Differentials } from "@/components/site/Differentials";
 import { Testimonials } from "@/components/site/Testimonials";
@@ -23,12 +24,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Escritório de advocacia em Salvador especializado em Direito Trabalhista, Previdenciário, do Consumidor e Bancário. Atendimento humanizado, estratégico e transparente.",
+          "Escritório de advocacia em Salvador com mais de 15 anos de experiência e 3.000 casos atendidos. Especializado em Direito Trabalhista, Previdenciário, do Consumidor, Bancário e assessoria ao Terceiro Setor.",
       },
       {
         name: "keywords",
         content:
-          "advocacia em Salvador, escritório de advocacia em Salvador, advogado trabalhista em Salvador, advogado previdenciário em Salvador, advogado bancário Salvador, advogado consumidor Salvador, assessoria jurídica em Salvador",
+          "advocacia em Salvador, escritório de advocacia em Salvador, advogado trabalhista em Salvador, advogado previdenciário em Salvador, advogado bancário Salvador, advogado consumidor Salvador, assessoria jurídica para terceiro setor, advogado terceiro setor Salvador, associações fundações institutos",
       },
       {
         property: "og:title",
@@ -60,7 +61,7 @@ export const Route = createFileRoute("/")({
           "@type": "LegalService",
           name: "Moncorvo Advogados Associados",
           description:
-            "Escritório de advocacia em Salvador / BA especializado em Direito Trabalhista, Previdenciário, do Consumidor e Bancário.",
+            "Escritório de advocacia em Salvador / BA com mais de 15 anos de experiência e 3.000 casos atendidos. Especializado em Direito Trabalhista, Previdenciário, do Consumidor, Bancário e assessoria ao Terceiro Setor.",
           image: "/og-image.jpg",
           telephone: "+55-71-98863-4838",
           email: "moncorvoadvogados@gmail.com",
@@ -91,6 +92,7 @@ function Index() {
         <About />
         <WhyChoose />
         <Practices />
+        <Team />
         <Process />
         <ConsultaProcessual />
         <Differentials />
