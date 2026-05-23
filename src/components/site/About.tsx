@@ -26,8 +26,10 @@ export function About() {
               com ética, transparência e excelência técnica.
             </p>
             <p>
-              Atuamos lado a lado dos nossos clientes, com escuta atenta e estratégia personalizada,
-              transformando demandas complexas em caminhos jurídicos claros e eficientes.
+              Com mais de <strong className="text-primary">15 anos de experiência</strong> consolidada
+              e mais de <strong className="text-primary">3.000 casos atendidos</strong>, atuamos lado a
+              lado dos nossos clientes, transformando demandas complexas em caminhos jurídicos claros,
+              seguros e eficientes.
             </p>
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3 pt-4">
               {[
