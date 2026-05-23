@@ -27,7 +27,7 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="font-display font-normal text-[2.15rem] leading-[1.1] sm:text-5xl lg:text-6xl xl:text-[4.25rem] xl:leading-[1.08] text-primary-foreground max-w-2xl">
+          <h1 className="font-display font-normal text-[2.4rem] leading-[1.02] sm:text-[3.5rem] lg:text-[4.5rem] xl:text-[5.25rem] xl:leading-[1] tracking-[-0.04em] text-primary-foreground max-w-2xl">
             Advocacia Estratégica
             <br />
             e <span className="text-gold italic font-light">Especializada</span>
