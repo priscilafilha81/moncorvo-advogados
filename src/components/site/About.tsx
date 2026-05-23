@@ -49,12 +49,15 @@ export function About() {
 
         <aside className="lg:col-span-5 lg:sticky lg:top-28">
           <div className="bg-gradient-primary rounded-2xl p-8 sm:p-10 shadow-premium text-primary-foreground">
-            <p className="text-xs tracking-[0.35em] uppercase text-gold mb-6">Nossos Números</p>
-            <div className="grid grid-cols-2 gap-y-8 gap-x-6">
+            <p className="text-xs tracking-[0.35em] uppercase text-gold mb-8">Nossos Números</p>
+            <div className="grid grid-cols-2 gap-y-10 gap-x-6">
               {stats.map((s) => (
-                <div key={s.label}>
-                  <div className="font-display text-4xl sm:text-5xl text-gold">{s.num}</div>
-                  <div className="mt-2 text-xs sm:text-sm text-primary-foreground/80 leading-tight">
+                <div key={s.label} className="group">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gold/10 border border-gold/20 text-gold mb-4 transition-all duration-500 group-hover:bg-gold/20 group-hover:scale-105">
+                    <s.icon className="w-5 h-5" strokeWidth={1.5} />
+                  </div>
+                  <div className="font-display text-4xl sm:text-5xl text-gold leading-none">{s.num}</div>
+                  <div className="mt-3 text-xs sm:text-sm text-primary-foreground/75 leading-snug tracking-wide">
                     {s.label}
                   </div>
                 </div>
