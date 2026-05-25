@@ -1,6 +1,11 @@
 import { Linkedin, Mail } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { useReveal } from "@/hooks/use-reveal";
+import rafaelPhoto from "@/assets/team/rafael-almeida.jpg";
+import camilaPhoto from "@/assets/team/camila-moura.jpg";
+import felipePhoto from "@/assets/team/felipe-santana.jpg";
+import julianaPhoto from "@/assets/team/juliana-costa.jpg";
+import andrePhoto from "@/assets/team/andre-carvalho.jpg";
 
 type Member = {
   name: string;
@@ -10,36 +15,42 @@ type Member = {
   photo?: string;
 };
 
+// Placeholder photos — substitua o valor de `photo` por fotos reais quando disponíveis.
 const team: Member[] = [
   {
     name: "Dr. Rafael Almeida",
     role: "Direito Trabalhista",
     bio: "Atuação estratégica em rescisões, vínculos empregatícios e contencioso trabalhista.",
     initials: "RA",
+    photo: rafaelPhoto,
   },
   {
     name: "Dra. Camila Moura",
     role: "Direito Previdenciário",
     bio: "Especialista em aposentadorias, benefícios do INSS e revisões previdenciárias.",
     initials: "CM",
+    photo: camilaPhoto,
   },
   {
     name: "Dr. Felipe Santana",
     role: "Direito Bancário",
     bio: "Defesa em juros abusivos, renegociação de dívidas e revisão contratual bancária.",
     initials: "FS",
+    photo: felipePhoto,
   },
   {
     name: "Dra. Juliana Costa",
     role: "Direito do Consumidor",
     bio: "Atuação em cobranças indevidas, fraudes, danos morais e conflitos de consumo.",
     initials: "JC",
+    photo: julianaPhoto,
   },
   {
     name: "Dr. André Carvalho",
     role: "Terceiro Setor",
     bio: "Consultoria para associações, fundações e institutos com foco em governança e compliance.",
     initials: "AC",
+    photo: andrePhoto,
   },
 ];
 
@@ -49,56 +60,66 @@ function MemberCard({ m, i }: { m: Member; i: number }) {
     <article
       ref={ref}
       style={{ transitionDelay: `${i * 80}ms` }}
-      className="reveal-on-scroll group relative bg-card border border-border rounded-2xl p-7 sm:p-8 hover:border-gold transition-all duration-500 hover:-translate-y-1 hover:shadow-premium overflow-hidden"
+      className="reveal-on-scroll group relative bg-card border border-border rounded-2xl overflow-hidden hover:border-gold transition-all duration-500 hover:-translate-y-1 hover:shadow-premium"
     >
-      <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-gold opacity-0 group-hover:opacity-10 rounded-full blur-3xl transition-opacity duration-700" />
-
-      <div className="relative">
-        {/* Photo / placeholder */}
-        <div className="relative mx-auto w-32 h-32 sm:w-36 sm:h-36 mb-6">
-          <div className="absolute inset-0 rounded-full bg-gradient-primary p-[2px] transition-transform duration-500 group-hover:scale-[1.03]">
-            <div className="w-full h-full rounded-full bg-card overflow-hidden flex items-center justify-center">
-              {m.photo ? (
-                <img
-                  src={m.photo}
-                  alt={`${m.name} — ${m.role}`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              ) : (
-                <span className="font-display text-3xl sm:text-4xl text-gold/80 tracking-wide select-none">
-                  {m.initials}
-                </span>
-              )}
-            </div>
+      {/* Portrait frame */}
+      <div className="relative aspect-[4/5] overflow-hidden bg-secondary/40">
+        {m.photo ? (
+          <img
+            src={m.photo}
+            alt={`${m.name} — ${m.role}`}
+            loading="lazy"
+            width={1024}
+            height={1280}
+            className="w-full h-full object-cover object-top transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-primary">
+            <span className="font-display text-5xl text-gold/80 tracking-wide select-none">
+              {m.initials}
+            </span>
           </div>
-          <span className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-gold border-4 border-card opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        )}
+
+        {/* Warm gradient overlay for institutional feel */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/15 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-gold/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+        {/* Role badge */}
+        <div className="absolute top-4 left-4">
+          <span className="inline-block bg-card/90 backdrop-blur-sm border border-gold/30 px-3 py-1.5 rounded-full text-[10px] tracking-[0.25em] uppercase text-primary font-medium">
+            {m.role}
+          </span>
         </div>
 
-        <div className="text-center">
-          <p className="text-[10px] tracking-[0.35em] uppercase text-gold font-medium mb-2">
-            {m.role}
-          </p>
-          <h3 className="font-display text-xl sm:text-2xl text-primary leading-tight">
+        {/* Name overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <h3 className="font-display text-2xl text-primary-foreground leading-tight drop-shadow-sm">
             {m.name}
           </h3>
-          <div className="mt-4 mx-auto w-10 h-px bg-gold/40 group-hover:w-16 group-hover:bg-gold transition-all duration-500" />
-          <p className="mt-5 text-sm text-muted-foreground leading-relaxed">{m.bio}</p>
+          <div className="mt-3 w-10 h-px bg-gold group-hover:w-20 transition-all duration-500" />
+        </div>
+      </div>
 
-          <div className="mt-6 flex items-center justify-center gap-3">
-            <span
-              className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border text-muted-foreground hover:border-gold hover:text-gold transition-colors duration-300"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-4 h-4" strokeWidth={1.5} />
-            </span>
-            <span
-              className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border text-muted-foreground hover:border-gold hover:text-gold transition-colors duration-300"
-              aria-label="E-mail"
-            >
-              <Mail className="w-4 h-4" strokeWidth={1.5} />
-            </span>
-          </div>
+      {/* Body */}
+      <div className="p-6 sm:p-7">
+        <p className="text-sm text-muted-foreground leading-relaxed min-h-[3.5rem]">
+          {m.bio}
+        </p>
+
+        <div className="mt-5 flex items-center gap-2.5">
+          <span
+            className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border text-muted-foreground hover:border-gold hover:text-gold transition-colors duration-300"
+            aria-label="LinkedIn"
+          >
+            <Linkedin className="w-4 h-4" strokeWidth={1.5} />
+          </span>
+          <span
+            className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border text-muted-foreground hover:border-gold hover:text-gold transition-colors duration-300"
+            aria-label="E-mail"
+          >
+            <Mail className="w-4 h-4" strokeWidth={1.5} />
+          </span>
         </div>
       </div>
     </article>
@@ -116,7 +137,7 @@ export function Team() {
           align="center"
         />
 
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {team.map((m, i) => (
             <MemberCard key={m.name} m={m} i={i} />
           ))}
