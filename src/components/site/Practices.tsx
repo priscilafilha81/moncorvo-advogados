@@ -36,16 +36,16 @@ const areas = [
   },
 ];
 
-function AreaCard({ a, i }: { a: (typeof areas)[number]; i: number }) {
+function AreaCard({ a, i, className = "" }: { a: (typeof areas)[number]; i: number; className?: string }) {
   const ref = useReveal<HTMLDivElement>();
   return (
     <article
       ref={ref}
       style={{ transitionDelay: `${i * 80}ms` }}
-      className="reveal-on-scroll group relative bg-card border border-border rounded-2xl p-8 sm:p-10 hover:border-gold transition-all duration-500 hover:-translate-y-1 hover:shadow-premium overflow-hidden"
+      className={`reveal-on-scroll group relative flex h-full bg-card border border-border rounded-2xl p-8 sm:p-10 hover:border-gold transition-all duration-500 hover:-translate-y-1 hover:shadow-premium overflow-hidden ${className}`}
     >
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-gold opacity-0 group-hover:opacity-10 rounded-full blur-3xl transition-opacity duration-700" />
-      <div className="relative">
+      <div className="relative flex h-full w-full flex-col">
         <div className="flex items-start justify-between mb-8">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary text-primary-foreground group-hover:bg-gold group-hover:text-gold-foreground transition-colors duration-500">
             <a.icon className="w-6 h-6" />
@@ -66,7 +66,7 @@ function AreaCard({ a, i }: { a: (typeof areas)[number]; i: number }) {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-gold transition-colors"
+          className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-gold transition-colors"
         >
           Agendar Atendimento
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -86,9 +86,16 @@ export function Practices() {
           subtitle="Atuação consultiva e contenciosa em áreas estratégicas, com mais de 15 anos de experiência defendendo direitos com profundidade técnica."
           align="center"
         />
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-6 gap-6">
           {areas.map((a, i) => (
-            <AreaCard key={a.title} a={a} i={i} />
+            <AreaCard
+              key={a.title}
+              a={a}
+              i={i}
+              className={`md:col-span-3 lg:col-span-2 ${
+                i === 3 ? "lg:col-start-2" : i === 4 ? "md:col-start-3 lg:col-start-4" : ""
+              }`}
+            />
           ))}
         </div>
       </div>

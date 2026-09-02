@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Instagram, Clock, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Instagram, Clock, MessageCircle } from "lucide-react";
 import { CONTACT, WHATSAPP_URL } from "@/lib/contact";
 import logo from "@/assets/mas-footer.png";
 
@@ -95,12 +95,6 @@ export function Footer() {
                 <Phone className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
                 <a href={`tel:+55${CONTACT.phone.replace(/\D/g, "")}`} className="hover:text-gold transition-colors">
                   {CONTACT.phone}
-                </a>
-              </li>
-              <li className="flex gap-3">
-                <Mail className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
-                <a href={`mailto:${CONTACT.email}`} className="hover:text-gold transition-colors break-all">
-                  {CONTACT.email}
                 </a>
               </li>
               <li className="flex gap-3">
