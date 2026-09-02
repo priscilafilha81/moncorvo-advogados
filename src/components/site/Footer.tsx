@@ -3,12 +3,11 @@ import { CONTACT, WHATSAPP_URL } from "@/lib/contact";
 import logo from "@/assets/mas-footer.png";
 
 const quickLinks = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#areas", label: "Áreas de Atuação" },
-  { href: "#processo", label: "Processo" },
-  { href: "#diferenciais", label: "Diferenciais" },
-  { href: "#depoimentos", label: "Depoimentos" },
+  { href: "#sobre", label: "O Escritório" },
+  { href: "#areas", label: "Especialidades" },
+  { href: "#consulte-processo", label: "Consulte seu Processo" },
   { href: "#faq", label: "FAQ" },
+  { href: "#contato", label: "Contato" },
 ];
 
 const areas = [
