@@ -43,7 +43,7 @@ export function Differentials() {
             <span className="text-xs tracking-[0.35em] uppercase text-gold">Diferenciais</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-foreground leading-[1.1]">
-            O que torna a Moncorvo uma escolha de confiança.
+            O que torna a MAS Advogados Associados uma escolha de confiança.
           </h2>
         </div>
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">

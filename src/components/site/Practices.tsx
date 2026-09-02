@@ -1,7 +1,7 @@
 import { Briefcase, ShieldAlert, ShoppingBag, Landmark, HeartHandshake, ArrowRight } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { useReveal } from "@/hooks/use-reveal";
-import { WHATSAPP_URL } from "@/lib/contact";
+import { WHATSAPP_SCHEDULE_URL } from "@/lib/contact";
 
 const areas = [
   {
@@ -63,7 +63,7 @@ function AreaCard({ a, i, className = "" }: { a: (typeof areas)[number]; i: numb
           ))}
         </ul>
         <a
-          href={WHATSAPP_URL}
+          href={WHATSAPP_SCHEDULE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-gold transition-colors"

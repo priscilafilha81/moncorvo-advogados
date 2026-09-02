@@ -36,7 +36,7 @@ export function Testimonials() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeader
           eyebrow="Depoimentos"
-          title="A confiança de quem viveu a experiência Moncorvo."
+          title="A confiança de quem viveu a experiência MAS Advogados Associados."
           align="center"
         />
 

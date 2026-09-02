@@ -1,5 +1,5 @@
 import { ArrowRight, Calendar } from "lucide-react";
-import { WHATSAPP_URL } from "@/lib/contact";
+import { WHATSAPP_URL, WHATSAPP_SCHEDULE_URL } from "@/lib/contact";
 
 export function FinalCTA() {
   return (
@@ -32,7 +32,7 @@ export function FinalCTA() {
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <a
-            href={WHATSAPP_URL}
+            href={WHATSAPP_SCHEDULE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-primary-foreground/30 px-7 py-4 rounded-full text-sm font-medium hover:bg-primary-foreground/10 transition-all"

@@ -33,7 +33,7 @@ export function WhyChoose() {
     <section className="py-24 sm:py-32 bg-secondary/40">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeader
-          eyebrow="Por que Moncorvo"
+          eyebrow="Por que MAS Advogados Associados"
           title="Uma advocacia construída para gerar confiança e resultados."
           subtitle="Combinamos rigor técnico e atendimento próximo para entregar uma experiência jurídica que respeita seu tempo, seu caso e a sua história."
           align="center"

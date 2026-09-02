@@ -1,5 +1,5 @@
 import { ArrowRight, Calendar, ShieldCheck, HeartHandshake, Eye, Target } from "lucide-react";
-import { WHATSAPP_URL } from "@/lib/contact";
+import { WHATSAPP_URL, WHATSAPP_SCHEDULE_URL } from "@/lib/contact";
 
 const pillars = [
   { icon: HeartHandshake, label: "Atendimento humanizado" },
@@ -51,7 +51,9 @@ export function Hero() {
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             <a
-              href="#contato"
+              href={WHATSAPP_SCHEDULE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 border border-primary-foreground/25 text-primary-foreground/90 px-7 py-4 rounded-full text-sm font-medium hover:bg-primary-foreground/5 hover:border-gold/60 hover:text-gold transition-all duration-300 w-full sm:w-auto"
             >
               <Calendar className="w-4 h-4" />

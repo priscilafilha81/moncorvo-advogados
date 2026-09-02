@@ -120,7 +120,7 @@ export function Footer() {
         <div className="mt-16 rounded-xl overflow-hidden border border-primary-foreground/10">
           <iframe
             src={mapsUrl}
-            title="Localização do escritório Moncorvo Advogados Associados"
+            title="Localização do escritório MAS Advogados Associados"
             width="100%"
             height="320"
             loading="lazy"
@@ -130,7 +130,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-primary-foreground/50">
-          <p>© {new Date().getFullYear()} Moncorvo Advogados Associados. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} MAS Advogados Associados. Todos os direitos reservados.</p>
           <p>Salvador / Bahia — Brasil</p>
         </div>
       </div>

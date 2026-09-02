@@ -21,7 +21,7 @@ export function About() {
           />
           <div className="mt-8 space-y-5 text-base sm:text-lg text-ink/85 leading-relaxed reveal-on-scroll" ref={ref}>
             <p>
-              O <strong className="text-primary">Moncorvo Advogados Associados</strong> nasceu com o
+              A <strong className="text-primary">MAS Advogados Associados</strong> nasceu com o
               propósito de oferecer atendimento jurídico estratégico, humanizado e acessível, atuando
               com ética, transparência e excelência técnica.
             </p>
