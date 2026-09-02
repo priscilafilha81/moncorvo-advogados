@@ -1,4 +1,4 @@
-import { Building2, ExternalLink, Landmark, Scale } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { useReveal } from "@/hooks/use-reveal";
 import {
@@ -12,6 +12,9 @@ import {
 import estadualImage from "@/assets/process-consultation/justica-estadual.png";
 import trabalhoImage from "@/assets/process-consultation/justica-do-trabalho.png";
 import federalImage from "@/assets/process-consultation/justica-federal.png";
+import estadualLogo from "@/assets/process-consultation/logos/tjba.png";
+import trabalhoLogo from "@/assets/process-consultation/logos/trt5.jpg";
+import federalLogo from "@/assets/process-consultation/logos/justica-federal.jpg";
 
 const portals = [
   {
@@ -21,7 +24,8 @@ const portals = [
     href: "https://www.tjba.jus.br/portal/",
     image: estadualImage,
     imageAlt: "Portal do Tribunal de Justiça da Bahia com a consulta processual destacada",
-    icon: Landmark,
+    logo: estadualLogo,
+    logoAlt: "Tribunal de Justiça do Estado da Bahia",
     marker: { left: "53.2%", top: "36.7%", width: "33.4%", height: "19%" },
   },
   {
@@ -31,7 +35,8 @@ const portals = [
     href: "https://www.trt5.jus.br/",
     image: trabalhoImage,
     imageAlt: "Portal da Justiça do Trabalho com a consulta processual destacada",
-    icon: Scale,
+    logo: trabalhoLogo,
+    logoAlt: "Tribunal Regional do Trabalho da 5ª Região",
     marker: { left: "8.2%", top: "37.4%", width: "13.5%", height: "7.5%" },
   },
   {
@@ -41,7 +46,8 @@ const portals = [
     href: "https://pje1g-consultapublica.trf1.jus.br/consultapublica/ConsultaPublica/listView.seam",
     image: federalImage,
     imageAlt: "Página oficial da Justiça Federal com o campo de processo destacado",
-    icon: Building2,
+    logo: federalLogo,
+    logoAlt: "Justiça Federal",
     marker: { left: "1.7%", top: "15.4%", width: "22.8%", height: "7%" },
   },
 ] as const;
@@ -60,9 +66,24 @@ function PortalPreview({ portal }: { portal: Portal }) {
         </DialogDescription>
       </DialogHeader>
 
+      <div className="border-b border-border px-6 py-5 sm:px-8">
+        <p className="text-sm text-muted-foreground">
+          Você será direcionado para o site oficial.
+        </p>
+        <a
+          href={portal.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:bg-primary/90 sm:w-auto"
+        >
+          Abrir portal oficial
+          <ExternalLink className="h-4 w-4" aria-hidden="true" />
+        </a>
+      </div>
+
       <div className="px-4 py-5 sm:px-8 sm:py-7">
         <div className="overflow-x-auto rounded-xl border border-border bg-secondary/30 shadow-soft">
-          <div className="relative min-w-[720px] sm:min-w-0">
+          <div className="relative">
             <img
               src={portal.image}
               alt={portal.imageAlt}
@@ -83,20 +104,6 @@ function PortalPreview({ portal }: { portal: Portal }) {
           </div>
         </div>
 
-        <div className="mt-5 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-          <p className="text-sm text-muted-foreground">
-            Você será direcionado para o site oficial.
-          </p>
-          <a
-            href={portal.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:bg-primary/90 sm:w-auto"
-          >
-            Abrir portal oficial
-            <ExternalLink className="h-4 w-4" aria-hidden="true" />
-          </a>
-        </div>
       </div>
     </DialogContent>
   );
@@ -104,8 +111,6 @@ function PortalPreview({ portal }: { portal: Portal }) {
 
 function PortalCard({ portal, index }: { portal: Portal; index: number }) {
   const ref = useReveal<HTMLElement>();
-  const Icon = portal.icon;
-
   return (
     <Dialog>
       <article
@@ -113,10 +118,24 @@ function PortalCard({ portal, index }: { portal: Portal; index: number }) {
         style={{ transitionDelay: `${index * 90}ms` }}
         className="reveal-on-scroll flex h-full flex-col items-center rounded-2xl border border-border bg-card px-6 py-8 text-center shadow-elev-1 transition-all duration-500 hover:-translate-y-1 hover:border-gold/60 sm:px-8 sm:py-10"
       >
-        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-gold/30 bg-gold/10 text-primary">
-          <Icon className="h-6 w-6" strokeWidth={1.6} aria-hidden="true" />
-        </span>
-        <h3 className="mt-6 font-display text-2xl text-primary sm:text-[1.7rem]">{portal.title}</h3>
+        <div className="flex h-28 w-full items-center justify-center rounded-xl border border-border bg-white p-3">
+          <img
+            src={portal.logo}
+            alt={portal.logoAlt}
+            className="max-h-full max-w-full object-contain"
+            loading="lazy"
+          />
+        </div>
+        <a
+          href={portal.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-primary/75 transition-colors hover:text-gold"
+        >
+          Acessar portal oficial
+          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+        </a>
+        <h3 className="mt-5 font-display text-2xl text-primary sm:text-[1.7rem]">{portal.title}</h3>
         <p className="mt-2 min-h-11 text-sm leading-relaxed text-muted-foreground">
           {portal.institution}
         </p>
