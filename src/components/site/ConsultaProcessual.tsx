@@ -13,7 +13,7 @@ import estadualImage from "@/assets/process-consultation/justica-estadual.png";
 import trabalhoImage from "@/assets/process-consultation/justica-do-trabalho.png";
 import federalImage from "@/assets/process-consultation/justica-federal.png";
 import estadualLogo from "@/assets/process-consultation/logos/tjba.png";
-import trabalhoLogo from "@/assets/process-consultation/logos/trt5.jpg";
+import trabalhoLogo from "@/assets/process-consultation/logos/trt5.png";
 import federalLogo from "@/assets/process-consultation/logos/justica-federal.jpg";
 
 const portals = [
@@ -123,7 +123,11 @@ function PortalCard({ portal, index }: { portal: Portal; index: number }) {
             src={portal.logo}
             alt={portal.logoAlt}
             className={`max-h-full max-w-full object-contain ${
-              portal.title === "Justiça Federal" ? "scale-[1.65]" : ""
+              portal.title === "Justiça Federal"
+                ? "scale-[1.65]"
+                : portal.title === "Justiça do Trabalho"
+                  ? "scale-[1.18]"
+                  : ""
             }`}
             loading="lazy"
           />
