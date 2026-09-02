@@ -118,11 +118,13 @@ function PortalCard({ portal, index }: { portal: Portal; index: number }) {
         style={{ transitionDelay: `${index * 90}ms` }}
         className="reveal-on-scroll flex h-full flex-col items-center rounded-2xl border border-border bg-card px-6 py-8 text-center shadow-elev-1 transition-all duration-500 hover:-translate-y-1 hover:border-gold/60 sm:px-8 sm:py-10"
       >
-        <div className="flex h-28 w-full items-center justify-center rounded-xl border border-border bg-white p-3">
+        <div className="flex h-28 w-full items-center justify-center overflow-hidden rounded-xl border border-border bg-white p-3">
           <img
             src={portal.logo}
             alt={portal.logoAlt}
-            className="max-h-full max-w-full object-contain"
+            className={`max-h-full max-w-full object-contain ${
+              portal.title === "Justiça Federal" ? "scale-[1.65]" : ""
+            }`}
             loading="lazy"
           />
         </div>
