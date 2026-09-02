@@ -31,15 +31,15 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-40 transition-[background-color,box-shadow,backdrop-filter,border-color] duration-500 ease-out ${
+      className={`fixed top-0 inset-x-0 z-40 bg-[#560811] transition-[box-shadow,border-color] duration-500 ease-out ${
         scrolled
-          ? "bg-background/80 backdrop-blur-md shadow-[0_8px_30px_-12px_rgba(91,0,8,0.12)] border-b border-border/60"
-          : "bg-transparent border-b border-transparent"
+          ? "shadow-[0_8px_30px_-12px_rgba(24,0,4,0.42)] border-b border-white/10"
+          : "border-b border-white/[0.07]"
       }`}
     >
       <div
         className={`mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 flex items-center justify-between transition-[height] duration-500 ${
-          scrolled ? "h-16 lg:h-[68px]" : "h-20 lg:h-24"
+          scrolled ? "h-[68px] lg:h-[72px]" : "h-20 lg:h-24"
         }`}
       >
         {/* Logo */}
@@ -58,8 +58,8 @@ export function Navbar() {
             fetchPriority="high"
             className={`w-auto object-contain select-none transition-all duration-500 group-hover:scale-[1.015] ${
               scrolled
-                ? "h-10 sm:h-11 lg:h-12"
-                : "h-12 sm:h-14 lg:h-[58px]"
+                ? "h-12 sm:h-[52px] lg:h-[58px]"
+                : "h-[58px] sm:h-16 lg:h-[70px]"
             }`}
             style={{ imageRendering: "auto" }}
             draggable={false}
@@ -76,11 +76,7 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className={`text-[13px] font-medium tracking-wide transition-colors duration-300 relative group inline-flex items-center ${
-                scrolled
-                  ? "text-ink/75 hover:text-primary"
-                  : "text-primary-foreground/85 hover:text-gold"
-              }`}
+              className="text-[13px] font-medium tracking-wide text-[#f4eee7]/90 hover:text-gold transition-colors duration-300 relative group inline-flex items-center"
             >
               <span className="relative z-10 transition-transform duration-300 group-hover:-translate-y-px">
                 {l.label}
@@ -97,11 +93,7 @@ export function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-semibold tracking-wide transition-all duration-300 hover:-translate-y-0.5 hover:shadow-elev-2 ${
-              scrolled
-                ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft"
-                : "bg-gold text-gold-foreground hover:bg-gold/90 shadow-soft"
-            }`}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gold text-gold-foreground text-[13px] font-semibold tracking-wide shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold/90 hover:shadow-elev-2"
           >
             <MessageCircle className="w-4 h-4" strokeWidth={2} />
             Falar com Especialista
@@ -110,11 +102,7 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className={`lg:hidden relative w-10 h-10 inline-flex items-center justify-center rounded-full transition-colors duration-300 ${
-            scrolled
-              ? "text-primary hover:bg-primary/5"
-              : "text-primary-foreground hover:bg-primary-foreground/10"
-          }`}
+          className="lg:hidden relative w-10 h-10 inline-flex items-center justify-center rounded-full text-[#f4eee7] transition-colors duration-300 hover:bg-white/10"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
