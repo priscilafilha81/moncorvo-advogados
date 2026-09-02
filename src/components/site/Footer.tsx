@@ -21,8 +21,10 @@ const areas = [
 export function Footer() {
   const mapsUrl =
     "https://www.google.com/maps?q=" +
-    encodeURIComponent("Avenida ACM, Edf. Cidadela Center II, Itaigara, Salvador, BA") +
+    encodeURIComponent(CONTACT.addressQuery) +
     "&output=embed";
+  const mapsLink =
+    "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CONTACT.addressQuery);
 
   return (
     <footer className="bg-ink text-primary-foreground">
@@ -83,13 +85,25 @@ export function Footer() {
           <div className="lg:col-span-3">
             <p className="text-xs tracking-[0.3em] uppercase text-gold mb-5">Contato</p>
             <ul className="space-y-4 text-sm text-primary-foreground/80">
-              <li className="flex gap-3">
-                <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
-                <span>
-                  {CONTACT.addressLine1}
-                  <br />
-                  {CONTACT.addressLine2}
-                </span>
+              <li>
+                <a
+                  href={mapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex gap-3 hover:text-gold transition-colors"
+                  aria-label={`Abrir endereço no Google Maps: ${CONTACT.addressQuery}`}
+                >
+                  <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                  <span>
+                    {CONTACT.addressLine1}
+                    <br />
+                    {CONTACT.addressLine2}
+                    <br />
+                    {CONTACT.addressLine3}
+                    <br />
+                    {CONTACT.addressLine4}
+                  </span>
+                </a>
               </li>
               <li className="flex gap-3">
                 <Phone className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />

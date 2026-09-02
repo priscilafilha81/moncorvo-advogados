@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: "O escritório atende online?",
-    a: "Sim. Oferecemos atendimento presencial em nosso escritório no Itaigara, em Salvador, e também atendimento 100% online por videoconferência, com o mesmo padrão de excelência, sigilo e proximidade.",
+    a: "Sim. Oferecemos atendimento presencial em nosso escritório em Brotas, Salvador, e também atendimento 100% online por videoconferência, com o mesmo padrão de excelência, sigilo e proximidade.",
   },
   {
     q: "Quais áreas jurídicas o escritório atende?",
