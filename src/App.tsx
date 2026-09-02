@@ -3,7 +3,6 @@ import { Hero } from "@/components/site/Hero";
 import { About } from "@/components/site/About";
 import { WhyChoose } from "@/components/site/WhyChoose";
 import { Practices } from "@/components/site/Practices";
-import { Team } from "@/components/site/Team";
 import { Process } from "@/components/site/Process";
 import { Differentials } from "@/components/site/Differentials";
 import { Testimonials } from "@/components/site/Testimonials";
@@ -22,7 +21,6 @@ export default function App() {
         <About />
         <WhyChoose />
         <Practices />
-        <Team />
         <Process />
         <ConsultaProcessual />
         <Differentials />

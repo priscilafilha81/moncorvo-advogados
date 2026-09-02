@@ -6,7 +6,6 @@ import logo from "@/assets/moncorvo-logo.png";
 const links = [
   { href: "#sobre", label: "O Escritório" },
   { href: "#areas", label: "Especialidades" },
-  { href: "#equipe", label: "Equipe" },
   { href: "#consulte-processo", label: "Consulte seu Processo" },
   { href: "#faq", label: "FAQ" },
   { href: "#contato", label: "Contato" },
