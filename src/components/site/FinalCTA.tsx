@@ -28,7 +28,7 @@ export function FinalCTA() {
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 bg-gold text-gold-foreground px-7 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gold/90 transition-all shadow-premium"
           >
-            Falar com Especialista
+            Falar com Dr. Ângelo
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <a

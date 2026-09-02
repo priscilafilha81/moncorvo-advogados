@@ -48,22 +48,34 @@ export function Navbar() {
           className="flex items-center group shrink-0 focus-visible:outline-none"
           aria-label="MAS Advogados Associados"
         >
-          <img
-            src={logo}
-            srcSet={`${logo} 1x, ${logo} 2x`}
-            alt="MAS Advogados Associados"
-            width={2135}
-            height={736}
-            decoding="async"
-            fetchPriority="high"
-            className={`w-auto object-contain select-none transition-all duration-500 group-hover:scale-[1.015] ${
+          <span
+            className={`relative block w-auto transition-all duration-500 group-hover:scale-[1.015] ${
               scrolled
                 ? "h-12 sm:h-[52px] lg:h-[58px]"
                 : "h-[58px] sm:h-16 lg:h-[70px]"
             }`}
-            style={{ imageRendering: "auto" }}
-            draggable={false}
-          />
+          >
+            <img
+              src={logo}
+              srcSet={`${logo} 1x, ${logo} 2x`}
+              alt="MAS Advogados Associados"
+              width={2135}
+              height={736}
+              decoding="async"
+              fetchPriority="high"
+              className="block h-full w-auto object-contain select-none"
+              style={{ imageRendering: "auto" }}
+              draggable={false}
+            />
+            <img
+              src={logo}
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 h-full w-auto object-contain brightness-[1.45] contrast-[1.08]"
+              style={{ clipPath: "inset(68% 0 0 0)", imageRendering: "auto" }}
+              draggable={false}
+            />
+          </span>
           <span className="sr-only">MAS Advogados Associados</span>
         </a>
 
@@ -96,7 +108,7 @@ export function Navbar() {
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gold text-gold-foreground text-[13px] font-semibold tracking-wide shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold/90 hover:shadow-elev-2"
           >
             <MessageCircle className="w-4 h-4" strokeWidth={2} />
-            Falar com Especialista
+            Falar com Dr. Ângelo
           </a>
         </div>
 
@@ -158,7 +170,7 @@ export function Navbar() {
               }`}
             >
               <MessageCircle className="w-4 h-4" />
-              Falar com Especialista
+              Falar com Dr. Ângelo
             </a>
           </nav>
         </div>
