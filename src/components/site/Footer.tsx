@@ -1,6 +1,6 @@
 import { MapPin, Phone, Mail, Instagram, Clock, MessageCircle } from "lucide-react";
 import { CONTACT, WHATSAPP_URL } from "@/lib/contact";
-import logo from "@/assets/moncorvo-logo.png";
+import logo from "@/assets/mas-footer.png";
 
 const quickLinks = [
   { href: "#sobre", label: "Sobre" },
@@ -33,8 +33,8 @@ export function Footer() {
             <div className="inline-flex items-center">
               <img
                 src={logo}
-                alt="Moncorvo Advogados Associados"
-                className="h-16 sm:h-20 w-auto object-contain select-none drop-shadow-[0_4px_18px_rgba(200,162,93,0.25)]"
+                alt="MAS Advogados Associados"
+                className="h-20 w-auto max-w-full object-contain select-none sm:h-24"
                 draggable={false}
               />
             </div>

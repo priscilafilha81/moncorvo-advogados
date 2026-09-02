@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/contact";
-import logo from "@/assets/moncorvo-logo.png";
+import logo from "@/assets/mas-navbar.png";
 
 const links = [
   { href: "#sobre", label: "O Escritório" },
@@ -46,25 +46,25 @@ export function Navbar() {
         <a
           href="#top"
           className="flex items-center group shrink-0 focus-visible:outline-none"
-          aria-label="Moncorvo Advogados Associados"
+          aria-label="MAS Advogados Associados"
         >
           <img
             src={logo}
             srcSet={`${logo} 1x, ${logo} 2x`}
-            alt="Moncorvo Advogados Associados"
-            width={1364}
-            height={236}
+            alt="MAS Advogados Associados"
+            width={2135}
+            height={736}
             decoding="async"
             fetchPriority="high"
             className={`w-auto object-contain select-none transition-all duration-500 group-hover:scale-[1.015] ${
               scrolled
-                ? "h-7 sm:h-8 lg:h-9"
-                : "h-8 sm:h-9 lg:h-10"
+                ? "h-10 sm:h-11 lg:h-12"
+                : "h-12 sm:h-14 lg:h-[58px]"
             }`}
             style={{ imageRendering: "auto" }}
             draggable={false}
           />
-          <span className="sr-only">Moncorvo Advogados Associados</span>
+          <span className="sr-only">MAS Advogados Associados</span>
         </a>
 
         {/* Desktop Nav */}
