@@ -4,7 +4,6 @@ Options -Indexes
   RewriteBase /
 
   # Domínio canônico: HTTPS sem www. Preserva caminho e parâmetros.
-  RewriteCond %{HTTP_HOST} ^(?:www\.)?moncorvoadvogados\.com\.br$ [NC,OR]
   RewriteCond %{HTTP_HOST} ^www\.masadvogadosassociados\.com$ [NC]
   RewriteRule ^ https://masadvogadosassociados.com%{REQUEST_URI} [R=301,L,NE]
 
