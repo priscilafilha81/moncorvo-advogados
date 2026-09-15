@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, MessageCircle } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -156,7 +156,8 @@ export function ConsultaOnline() {
   const [answers, setAnswers] = useState<Answers>({});
   const [step, setStep] = useState(0);
   const [preselected, setPreselected] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [sendState, setSendState] = useState<"ready" | "opened" | "returned">("ready");
+  const whatsappWasLeft = useRef(false);
 
   useEffect(() => {
     const selectArea = (event: Event) => {
@@ -166,11 +167,40 @@ export function ConsultaOnline() {
       setPreselected(true);
       setAnswers({});
       setStep(0);
-      setSubmitted(false);
+      setSendState("ready");
     };
     window.addEventListener(CONSULTA_ONLINE_EVENT, selectArea);
     return () => window.removeEventListener(CONSULTA_ONLINE_EVENT, selectArea);
   }, []);
+
+  useEffect(() => {
+    if (sendState !== "opened") return;
+
+    const markAway = () => {
+      whatsappWasLeft.current = true;
+    };
+    const markReturned = () => {
+      if (whatsappWasLeft.current) setSendState("returned");
+    };
+    const handleVisibility = () => {
+      if (document.visibilityState === "hidden") markAway();
+      else markReturned();
+    };
+
+    window.addEventListener("blur", markAway);
+    window.addEventListener("focus", markReturned);
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => {
+      window.removeEventListener("blur", markAway);
+      window.removeEventListener("focus", markReturned);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, [sendState]);
+
+  const markWhatsappOpened = () => {
+    whatsappWasLeft.current = false;
+    setSendState("opened");
+  };
 
   const steps = useMemo<Step[]>(() => {
     const result: Step[] = [
@@ -310,22 +340,35 @@ export function ConsultaOnline() {
 
             {isDone ? (
               <div className="text-center">
-                {submitted ? (
+                {sendState !== "ready" ? (
                   <>
                     <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gold text-gold-foreground">
                       <Check className="h-5 w-5" />
                     </span>
                     <h3 className="mt-5 font-display text-3xl text-primary">
-                      Obrigado, {answers.nome}.
+                      {sendState === "returned"
+                        ? `Tudo certo por aqui, ${answers.nome}.`
+                        : `Solicitação preparada, ${answers.nome}.`}
                     </h3>
                     <p className="mx-auto mt-4 text-muted-foreground">
-                      Sua solicitação foi preparada para envio.
-                      <br />Para concluir, confirme o envio da mensagem no WhatsApp.
+                      {sendState === "returned" ? (
+                        <>
+                          Se você já confirmou o envio da mensagem no WhatsApp, sua solicitação está
+                          concluída.
+                          <br />
+                          <span className="mt-2 block">
+                            Caso ainda não tenha enviado, você pode abrir o WhatsApp novamente.
+                          </span>
+                        </>
+                      ) : (
+                        "Confirme o envio da mensagem no WhatsApp para concluir seu atendimento."
+                      )}
                     </p>
                     <a
                       href={consultationWhatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={markWhatsappOpened}
                       className="mt-7 inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-primary hover:text-gold"
                     >
                       <MessageCircle className="h-4 w-4" /> Abrir WhatsApp novamente
@@ -344,7 +387,7 @@ export function ConsultaOnline() {
                       href={consultationWhatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => setSubmitted(true)}
+                      onClick={markWhatsappOpened}
                       className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
                     >
                       <MessageCircle className="h-5 w-5" /> Enviar solicitação
