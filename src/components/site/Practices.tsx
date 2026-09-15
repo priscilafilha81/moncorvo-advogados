@@ -1,7 +1,7 @@
 import { Briefcase, ShieldAlert, ShoppingBag, Landmark, HeartHandshake, ArrowRight } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { useReveal } from "@/hooks/use-reveal";
-import { WHATSAPP_SCHEDULE_URL } from "@/lib/contact";
+import { CONSULTA_ONLINE_EVENT } from "./ConsultaOnline";
 
 const areas = [
   {
@@ -63,9 +63,10 @@ function AreaCard({ a, i, className = "" }: { a: (typeof areas)[number]; i: numb
           ))}
         </ul>
         <a
-          href={WHATSAPP_SCHEDULE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#consulta-online"
+          onClick={() =>
+            window.dispatchEvent(new CustomEvent(CONSULTA_ONLINE_EVENT, { detail: a.title }))
+          }
           className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-gold transition-colors"
         >
           Agendar Atendimento
