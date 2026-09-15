@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, MessageCircle } from "lucide-react";
-import { WHATSAPP_NUMBER } from "@/lib/contact";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const CONSULTA_ONLINE_EVENT = "consulta-online-select";
+const CONSULTA_ONLINE_WHATSAPP_NUMBER = "5571992506363";
 
 const areaFlows = {
   "Direito Trabalhista": [
@@ -156,6 +156,7 @@ export function ConsultaOnline() {
   const [answers, setAnswers] = useState<Answers>({});
   const [step, setStep] = useState(0);
   const [preselected, setPreselected] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const selectArea = (event: Event) => {
@@ -165,6 +166,7 @@ export function ConsultaOnline() {
       setPreselected(true);
       setAnswers({});
       setStep(0);
+      setSubmitted(false);
     };
     window.addEventListener(CONSULTA_ONLINE_EVENT, selectArea);
     return () => window.removeEventListener(CONSULTA_ONLINE_EVENT, selectArea);
@@ -213,30 +215,47 @@ export function ConsultaOnline() {
   const phoneValid = current?.key !== "whatsapp" || value.replace(/\D/g, "").length >= 10;
 
   const whatsappMessage = useMemo(() => {
-    const labels: Record<string, string> = {
-      assunto: "Assunto",
-      situacao: "Informações adicionais",
-      instituicao: "Instituição financeira",
-      necessidade: "Principal necessidade",
+    const labelsByArea: Partial<Record<Area, Record<string, string>>> = {
+      "Direito Trabalhista": { assunto: "Assunto", situacao: "Ainda trabalha na empresa" },
+      "Direito Previdenciário": { assunto: "Assunto", situacao: "Situação do pedido ao INSS" },
+      "Direito do Consumidor": {
+        assunto: "Problema",
+        situacao: "Possui documentos ou comprovantes",
+      },
+      "Direito Bancário": {
+        assunto: "Assunto",
+        instituicao: "Instituição financeira",
+        situacao: "Valor aproximado",
+      },
+      "Assessoria ao Terceiro Setor": {
+        assunto: "Tipo de organização",
+        necessidade: "Principal necessidade",
+        situacao: "Situação do CNPJ",
+      },
     };
+    const labels = area ? labelsByArea[area] || {} : {};
     const details = Object.entries(answers)
       .filter(
         ([key, answer]) => !["nome", "area", "whatsapp", "email", "resumo"].includes(key) && answer,
       )
       .map(([key, answer]) => `${labels[key] || key}: ${answer}`);
     return [
-      "Olá, vim pelo site do MAS Advogados Associados.",
+      "Olá, vim pela Consulta Online do MAS Advogados Associados.",
       "",
       `Nome: ${answers.nome || ""}`,
       `Área: ${area}`,
       ...details,
-      `WhatsApp: ${answers.whatsapp || ""}`,
+      `WhatsApp para contato: ${answers.whatsapp || ""}`,
       ...(answers.email ? [`E-mail: ${answers.email}`] : []),
-      `Resumo da situação: ${answers.resumo || ""}`,
+      "",
+      "Resumo da situação:",
+      answers.resumo || "",
       "",
       "Gostaria de solicitar atendimento.",
     ].join("\n");
   }, [answers, area]);
+
+  const consultationWhatsappUrl = `https://wa.me/${CONSULTA_ONLINE_WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <section
@@ -291,25 +310,47 @@ export function ConsultaOnline() {
 
             {isDone ? (
               <div className="text-center">
-                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gold text-gold-foreground">
-                  <Check className="h-5 w-5" />
-                </span>
-                <h3 className="mt-5 font-display text-3xl text-primary">
-                  Obrigado, {answers.nome}.
-                </h3>
-                <p className="mx-auto mt-4 text-muted-foreground">
-                  Recebemos suas informações.
-                  <br />A equipe do MAS Advogados Associados poderá entrar em contato para
-                  compreender melhor a sua solicitação.
-                </p>
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
-                >
-                  <MessageCircle className="h-5 w-5" /> Enviar solicitação pelo WhatsApp
-                </a>
+                {submitted ? (
+                  <>
+                    <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gold text-gold-foreground">
+                      <Check className="h-5 w-5" />
+                    </span>
+                    <h3 className="mt-5 font-display text-3xl text-primary">
+                      Obrigado, {answers.nome}.
+                    </h3>
+                    <p className="mx-auto mt-4 text-muted-foreground">
+                      Sua solicitação foi preparada para envio.
+                      <br />Para concluir, confirme o envio da mensagem no WhatsApp.
+                    </p>
+                    <a
+                      href={consultationWhatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-7 inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-primary hover:text-gold"
+                    >
+                      <MessageCircle className="h-4 w-4" /> Abrir WhatsApp novamente
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="font-display text-3xl text-primary">
+                      Sua solicitação está pronta para ser enviada.
+                    </h3>
+                    <p className="mx-auto mt-4 text-muted-foreground">
+                      Confira e clique abaixo para enviar suas informações ao MAS Advogados
+                      Associados.
+                    </p>
+                    <a
+                      href={consultationWhatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setSubmitted(true)}
+                      className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
+                    >
+                      <MessageCircle className="h-5 w-5" /> Enviar solicitação
+                    </a>
+                  </>
+                )}
               </div>
             ) : (
               <>
