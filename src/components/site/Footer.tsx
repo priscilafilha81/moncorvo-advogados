@@ -5,6 +5,7 @@ import logo from "@/assets/mas-footer.png";
 const quickLinks = [
   { href: "#sobre", label: "O Escritório" },
   { href: "#areas", label: "Especialidades" },
+  { href: "#consulta-online", label: "Consulta Online" },
   { href: "#consulte-processo", label: "Consulte seu Processo" },
   { href: "#faq", label: "FAQ" },
   { href: "#contato", label: "Contato" },
@@ -69,7 +70,7 @@ export function Footer() {
           </div>
 
           {/* Áreas */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <p className="text-xs tracking-[0.3em] uppercase text-gold mb-5">Atuação</p>
             <ul className="space-y-3">
               {areas.map((a) => (
@@ -81,7 +82,7 @@ export function Footer() {
           </div>
 
           {/* Contato */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <p className="text-xs tracking-[0.3em] uppercase text-gold mb-5">Contato</p>
             <ul className="space-y-4 text-sm text-primary-foreground/80">
               <li>
@@ -93,14 +94,11 @@ export function Footer() {
                   aria-label={`Abrir endereço no Google Maps: ${CONTACT.addressQuery}`}
                 >
                   <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
-                  <span>
-                    {CONTACT.addressLine1}
-                    <br />
-                    {CONTACT.addressLine2}
-                    <br />
-                    {CONTACT.addressLine3}
-                    <br />
-                    {CONTACT.addressLine4}
+                  <span className="leading-relaxed">
+                    <span className="block lg:whitespace-nowrap">{CONTACT.addressLine1}</span>
+                    <span className="block lg:whitespace-nowrap">{CONTACT.addressLine2}</span>
+                    <span className="block">{CONTACT.addressLine3}</span>
+                    <span className="block">{CONTACT.addressLine4}</span>
                   </span>
                 </a>
               </li>

@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, MessageCircle } from "lucide-react";
+import { WHATSAPP_NUMBER } from "@/lib/contact";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const CONSULTA_ONLINE_EVENT = "consulta-online-select";
-const CONSULTA_ONLINE_WHATSAPP_NUMBER = "5571992506363";
 
 const areaFlows = {
   "Direito Trabalhista": [
@@ -335,7 +335,7 @@ export function ConsultaOnline() {
     ].join("\n");
   }, [answers, area]);
 
-  const consultationWhatsappUrl = `https://wa.me/${CONSULTA_ONLINE_WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+  const consultationWhatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <section
