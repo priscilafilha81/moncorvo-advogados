@@ -139,7 +139,32 @@ const areaFlows = {
 type Area = keyof typeof areaFlows;
 type Answers = Record<string, string>;
 type Step = { key: string; question: string; type?: string; options?: readonly string[] };
+type SendState = "ready" | "opened" | "returned";
+type SavedConsulta = {
+  area: Area | "";
+  answers: Answers;
+  step: number;
+  preselected: boolean;
+  sendState: SendState;
+};
 const areas = Object.keys(areaFlows) as Area[];
+const CONSULTA_STORAGE_KEY = "mas-consulta-online";
+
+function loadSavedConsulta(): SavedConsulta {
+  const empty: SavedConsulta = {
+    area: "",
+    answers: {},
+    step: 0,
+    preselected: false,
+    sendState: "ready",
+  };
+  try {
+    const saved = localStorage.getItem(CONSULTA_STORAGE_KEY);
+    return saved ? { ...empty, ...JSON.parse(saved) } : empty;
+  } catch {
+    return empty;
+  }
+}
 
 function formatPhone(value: string) {
   const digits = value.replace(/\D/g, "").slice(0, 11);
@@ -152,12 +177,14 @@ function formatPhone(value: string) {
 
 export function ConsultaOnline() {
   const sectionRef = useReveal<HTMLElement>();
-  const [area, setArea] = useState<Area | "">("");
-  const [answers, setAnswers] = useState<Answers>({});
-  const [step, setStep] = useState(0);
-  const [preselected, setPreselected] = useState(false);
-  const [sendState, setSendState] = useState<"ready" | "opened" | "returned">("ready");
+  const [initialState] = useState(loadSavedConsulta);
+  const [area, setArea] = useState<Area | "">(initialState.area);
+  const [answers, setAnswers] = useState<Answers>(initialState.answers);
+  const [step, setStep] = useState(initialState.step);
+  const [preselected, setPreselected] = useState(initialState.preselected);
+  const [sendState, setSendState] = useState<SendState>(initialState.sendState);
   const whatsappWasLeft = useRef(false);
+  const skipNextPersistence = useRef(false);
 
   useEffect(() => {
     const selectArea = (event: Event) => {
@@ -172,6 +199,18 @@ export function ConsultaOnline() {
     window.addEventListener(CONSULTA_ONLINE_EVENT, selectArea);
     return () => window.removeEventListener(CONSULTA_ONLINE_EVENT, selectArea);
   }, []);
+
+  useEffect(() => {
+    if (skipNextPersistence.current) {
+      skipNextPersistence.current = false;
+      localStorage.removeItem(CONSULTA_STORAGE_KEY);
+      return;
+    }
+    localStorage.setItem(
+      CONSULTA_STORAGE_KEY,
+      JSON.stringify({ area, answers, step, preselected, sendState }),
+    );
+  }, [area, answers, step, preselected, sendState]);
 
   useEffect(() => {
     if (sendState !== "opened") return;
@@ -200,6 +239,17 @@ export function ConsultaOnline() {
   const markWhatsappOpened = () => {
     whatsappWasLeft.current = false;
     setSendState("opened");
+  };
+
+  const startNewConsulta = () => {
+    skipNextPersistence.current = true;
+    whatsappWasLeft.current = false;
+    setArea("");
+    setAnswers({});
+    setStep(0);
+    setPreselected(false);
+    setSendState("ready");
+    document.getElementById("consulta-online")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const steps = useMemo<Step[]>(() => {
@@ -364,15 +414,26 @@ export function ConsultaOnline() {
                         "Confirme o envio da mensagem no WhatsApp para concluir seu atendimento."
                       )}
                     </p>
-                    <a
-                      href={consultationWhatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={markWhatsappOpened}
-                      className="mt-7 inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-primary hover:text-gold"
-                    >
-                      <MessageCircle className="h-4 w-4" /> Abrir WhatsApp novamente
-                    </a>
+                    <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                      <a
+                        href={consultationWhatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={markWhatsappOpened}
+                        className="inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium text-primary hover:text-gold"
+                      >
+                        <MessageCircle className="h-4 w-4" /> Abrir WhatsApp novamente
+                      </a>
+                      {sendState === "returned" && (
+                        <button
+                          type="button"
+                          onClick={startNewConsulta}
+                          className="inline-flex min-h-11 items-center justify-center rounded-full border border-primary/25 px-5 py-2.5 text-sm font-medium text-primary hover:border-gold hover:text-gold"
+                        >
+                          Nova solicitação
+                        </button>
+                      )}
+                    </div>
                   </>
                 ) : (
                   <>
