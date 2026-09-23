@@ -348,7 +348,7 @@ export function ConsultaOnline() {
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
             Atendimento guiado
           </span>
-          <h2 className="mt-4 font-display text-4xl sm:text-5xl text-primary">Consulta Online</h2>
+          <h2 className="mt-4 font-display text-4xl sm:text-5xl text-primary">ATENDIMENTO ONLINE</h2>
           <p className="mx-auto mt-5 text-lg text-ink/85">
             Conte-nos brevemente como podemos ajudar.
           </p>
