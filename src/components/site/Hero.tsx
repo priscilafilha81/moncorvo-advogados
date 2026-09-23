@@ -50,10 +50,10 @@ export function Hero() {
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
               <a
-                href="#areas"
+                href="#consulta-online"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary-foreground/25 px-7 py-4 text-sm font-medium text-primary-foreground/90 transition-all duration-300 hover:border-gold/60 hover:bg-primary-foreground/5 hover:text-gold sm:w-auto"
               >
-                Conheça nossas especialidades
+                Atendimento Online
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>

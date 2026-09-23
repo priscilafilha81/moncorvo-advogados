@@ -6,7 +6,6 @@ import logo from "@/assets/mas-navbar.png";
 const links = [
   { href: "#sobre", label: "O Escritório" },
   { href: "#areas", label: "Especialidades" },
-  { href: "#consulta-online", label: "Consulta Online" },
   { href: "#consulte-processo", label: "Consulte seu Processo" },
   { href: "#faq", label: "FAQ" },
   { href: "#contato", label: "Contato" },
